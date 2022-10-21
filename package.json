@@ -12,7 +12,9 @@
     "expo": "~46.0.13",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
-    "react-native": "0.69.6"
+    "react-native": "0.69.6",
+    "react-native-element-dropdown": "^2.3.0",
+    "react-native-input-select": "^0.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
