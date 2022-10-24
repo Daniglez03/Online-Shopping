@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 4,
         elevation: 10,
-        backgroundColor: '#005b4f',
+        backgroundColor: '#00675b',
     },
 })
 export default ProductInput;
