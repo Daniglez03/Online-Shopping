@@ -2,16 +2,24 @@ import { useState } from 'react';
 import { StyleSheet, ScrollView, View, Text } from 'react-native';
 import ListItem from './components/ListItem';
 import ProductInput from './components/ProductInput';
+import uuid from 'react-native-uuid'
 
 export default function App() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([product]);
+  let product = {
+    id: uuid.v4(),
+    name: '',
+    quantity: 1,
+    bought: false,
+    type: ''
+  };
 
   const addProductHandler = (productName) => {
     setProducts(() => [...products, productName])
   }
 
   const removeProductHandler = (productName) => {
-    setProducts(() => products.filter((product) => 
+    setProducts(() => products.filter((product) =>
     product != productName
     ));
   }
@@ -20,11 +28,11 @@ export default function App() {
       <ProductInput onProductAdd={addProductHandler}/>
       <ScrollView style={styles.productList}>
         {
-          products.length === 0 
-            ? <Text style={styles.textEmpty}>Aún no hay productos</Text> 
+          products.length === 0
+            ? <Text style={styles.textEmpty}>Aún no hay productos</Text>
             : products.map((product, idx) => (
-            <ListItem 
-            key={idx + product} 
+            <ListItem
+            key={idx + product}
             productName={product}
             onProductRemove={removeProductHandler}/>
             ))
@@ -51,5 +59,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: '5%',
   },
-  
+
 });
