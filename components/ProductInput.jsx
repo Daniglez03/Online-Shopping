@@ -1,20 +1,36 @@
 import { useState } from 'react'
 import { TextInput, View, StyleSheet, Pressable, Text } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown';
+import uuid from 'react-native-uuid';
 
 const ProductInput = ({ onProductAdd }) => {
-    const [productName, setProductName] = useState('');
-
-    const changeTextHandler = (value) => {
-        setProductName(value)
+    let product = {
+        id: uuid.v4(),
+        name: "",
+        quantity: 1,
+        bought: false,
+        type: ""
     }
+    const [productObject, setproductObject] = useState(product);
+
+    const changeProductHandler = (value) => {
+        setproductObject({ ...productObject, name: value })
+    }
+
+    const changeQuantityHandler = (value) => {
+        setproductObject({ ...productObject, quantity: value })
+    }
+
+    const changeTypeHandler = (value) => {
+        setproductObject({ ...productObject, type: value })
+    }
+
     const addProductHandler = () => {
-        const sanitizedName = productName.trim()
+        const sanitizedName = productObject.name.trim()
         if (sanitizedName != '') {
-            onProductAdd(productName)
-            setProductName('')
+            onProductAdd(productObject)
+            setproductObject({...productObject, name: "", type: "", quantity: 1, bought: false})
         }
-        setProductName('')
     }
     const DATA = [
         { label: 'Fruit', value: 'Fruit' },
@@ -29,8 +45,8 @@ const ProductInput = ({ onProductAdd }) => {
                 <TextInput style={styles.productName}
                     placeholder='Product Name'
                     keyboardType='default'
-                    onChangeText={changeTextHandler}
-                    value={productName} />
+                    onChangeText={changeProductHandler}
+                    value={productObject.name}/>
                 <Dropdown
                     data={DATA}
                     style={styles.dropdown}
@@ -40,15 +56,26 @@ const ProductInput = ({ onProductAdd }) => {
                     labelField="label"
                     valueField="value"
                     placeholder={'Type'}
+                    value={productObject.type.label}
+                    onChange={changeTypeHandler}
                 />
             </View>
-            <View style={styles.tal}>
+            <View>
                 <TextInput style={styles.quantityInput}
                     placeholder='Quantity'
-                    keyboardType='numeric' />
-                <Pressable style={styles.button} onPress={addProductHandler}>
-                    <Text style={styles.text}>ADD</Text>
-                </Pressable>
+                    keyboardType='numeric'
+                    value={productObject.quantity}
+                    onChangeText={changeQuantityHandler}
+                />
+                {
+                    productObject.name !== '' && productObject.type !== ''
+                        ? <Pressable style={styles.button} onPress={addProductHandler}>
+                            <Text>ADD</Text>
+                        </Pressable>
+                        : <Pressable disabled={true} style={styles.buttonDisabled}>
+                            <Text>ADD</Text>
+                        </Pressable>
+                }
             </View>
         </View>
     )
@@ -101,7 +128,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 4,
         elevation: 10,
-        backgroundColor: '#00675b',
+        backgroundColor: '#64d8cb',
     },
+    buttonDisabled: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        borderRadius: 4,
+        elevation: 10,
+        backgroundColor: '#00675b',
+    }
 })
 export default ProductInput;
