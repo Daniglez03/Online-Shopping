@@ -1,9 +1,23 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 const ListItem = ({ product }) => {
+    const addImage = (type) => {
+        switch (type) {
+            case "Fruit":
+                return require('../assets/fruit.png')
+            case "Meat":
+                return require('../assets/meat.png')
+            case "Fish":
+                return require('../assets/dead-fish.png')
+            case "Bakery":
+                return require('../assets/croissant.png')
+            case "Vegetable":
+                return require('../assets/spinach.png')
+        }
+    }
     return (
         <View style={styles.listItem}>
-            <Image style={styles.productImage} source={require("../assets/favicon.png")}></Image>
+            <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
             <Text style={styles.productName}>{product.quantity} x {product.name}</Text>
         </View>
     )
@@ -23,7 +37,7 @@ const styles = StyleSheet.create({
     productImage: {
         width: 70,
         height: 70,
-        margin:3
+        margin: 3
     },
     productName: {
         fontSize: 20,
