@@ -1,15 +1,12 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 
-const ListItem = ({ productName, onProductRemove }) => {
+const ListItem = ({ product }) => {
     return (
-        <Pressable onPress={() => onProductRemove(productName)}>
-            <View style={styles.listItem}>
-                <Image style={styles.productImage} source={require('../assets/botella.webp')} />
-                <Text style={styles.productName}>{productName}</Text>
-            </View>
-        </Pressable>
+        <View style={styles.listItem}>
+            <Image style={styles.productImage} source={require("../assets/favicon.png")}></Image>
+            <Text style={styles.productName}>{product.quantity} x {product.name}</Text>
+        </View>
     )
-
 }
 const styles = StyleSheet.create({
     listItem: {
@@ -26,6 +23,7 @@ const styles = StyleSheet.create({
     productImage: {
         width: 70,
         height: 70,
+        margin:3
     },
     productName: {
         fontSize: 20,
