@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { TextInput, View, StyleSheet, Pressable, Text } from 'react-native'
 import { Dropdown } from 'react-native-element-dropdown';
-import uuid from 'react-native-uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 const ProductInput = ({ onProductAdd }) => {
     let product = {
-        id: uuid.v4(),
+        id: uuidv4(),
         name: "",
         quantity: 1,
         bought: false,
