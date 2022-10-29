@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 const ListItem = ({ product }) => {
     const addImage = (type) => {
@@ -15,11 +15,14 @@ const ListItem = ({ product }) => {
                 return require('../assets/spinach.png')
         }
     }
+    console.log(product);
     return (
-        <View style={styles.listItem}>
-            <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
-            <Text style={styles.productName}>{product.quantity} x {product.name}</Text>
-        </View>
+        <Pressable>
+            <View style={styles.listItem}>
+                <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
+                <Text style={styles.productName}>{product.quantity} x {product.name}</Text>
+            </View>
+        </Pressable>
     )
 }
 const styles = StyleSheet.create({

@@ -17,6 +17,9 @@ export default function App() {
   const removeProductHandler = () => {
     setProducts('')
   }
+  // const touchBoughtHandler = (productName) => {
+  //   setProducts(productName.bought = true)
+  // }
   return (
     <View style={styles.container}>
       <ProductInput onProductAdd={addProductHandler} />
