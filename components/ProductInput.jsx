@@ -96,15 +96,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#00766c',
         borderRadius: 5,
         marginBottom: 15,
-        textAlign: 'center'
+        textAlign: 'center',
+        maxWidth: 150
     },
     quantityInput: {
         backgroundColor: '#00766c',
         borderRadius: 5,
         marginBottom: 15,
         textAlign: 'center',
+        maxWidth: 85
     },
-    // Elementos input desplegables
+    // Elementos input desplegables //
     dropdown: {
         width: 150,
         height: 40,
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     selectedTextStyle: {
         fontSize: 16,
     },
-    //
+    //////////////////////////////////
     button: {
         alignItems: 'center',
         justifyContent: 'center',

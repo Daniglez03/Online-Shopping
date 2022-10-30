@@ -3,34 +3,41 @@ import { StyleSheet, ScrollView, View, Text, Pressable } from 'react-native';
 import ListItem from './components/ListItem';
 import ProductInput from './components/ProductInput';
 
-// Arreglar input de product
-// <TextInput value={this.state.text} maxLength={15} />
-// resizemode: contain
-
 export default function App() {
   const [products, setProducts] = useState([]);
+
+  let names = []
+  if (products) {
+    products.forEach(element => {
+      names.push(element.name)
+    });
+  }
 
   const addProductHandler = (productName) => {
     setProducts(() => [...products, productName])
   }
 
+  let changeBought = (productName) => {
+    productName.bought = !productName.bought
+    //console.log(productName);
+    return productName.bought
+  }
+
   const removeProductHandler = () => {
     setProducts('')
   }
-  // const touchBoughtHandler = (productName) => {
-  //   setProducts(productName.bought = true)
-  // }
   return (
     <View style={styles.container}>
       <ProductInput onProductAdd={addProductHandler} />
       <ScrollView style={styles.productList}>
         {
-          products.length === 0
+          names.length === 0
             ? <Text style={styles.textEmpty}>Aún no hay productos</Text>
             : products.map((product, idx) => (
               <ListItem
                 key={idx + product}
-                product={product}/>
+                product={product}
+                changeBought={changeBought} />
             ))
         }
       </ScrollView>
