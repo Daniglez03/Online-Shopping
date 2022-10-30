@@ -32,7 +32,7 @@ export default function App() {
       <ScrollView style={styles.productList}>
         {
           names.length === 0
-            ? <Text style={styles.textEmpty}>Aún no hay productos</Text>
+            ? <Text style={styles.textEmpty}>Empty Shopping List</Text>
             : products.map((product, idx) => (
               <ListItem
                 key={idx + product}
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   textEmpty: {
     textAlign: 'center',
     marginTop: '5%',
+    marginTop: 230
   },
   button: {
     marginBottom: 20,
