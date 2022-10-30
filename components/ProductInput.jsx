@@ -29,7 +29,7 @@ const ProductInput = ({ onProductAdd }) => {
         const sanitizedName = productObject.name.trim()
         if (sanitizedName != '') {
             onProductAdd(productObject)
-            setproductObject({...productObject, name: "", type: "", quantity: 1, bought: false})
+            setproductObject({ ...productObject, name: "", type: "", quantity: 1, bought: false })
         }
     }
     const DATA = [
@@ -46,7 +46,7 @@ const ProductInput = ({ onProductAdd }) => {
                     placeholder='Product Name'
                     keyboardType='default'
                     onChangeText={changeProductHandler}
-                    value={productObject.name}/>
+                    value={productObject.name} />
                 <Dropdown
                     data={DATA}
                     style={styles.dropdown}

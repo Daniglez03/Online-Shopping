@@ -17,9 +17,8 @@ export default function App() {
     setProducts(() => [...products, productName])
   }
 
-  let changeBought = (productName) => {
+  const changeBought = (productName) => {
     productName.bought = !productName.bought
-    //console.log(productName);
     return productName.bought
   }
 
