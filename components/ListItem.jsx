@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
-const ListItem = ({ product }) => {
+const ListItem = ({ product, changeBought }) => {
     const [ newProduct, setNewProduct ] = useState(product);
     const addImage = (type) => {
         switch (type) {
@@ -18,9 +18,9 @@ const ListItem = ({ product }) => {
         }
     }
     return (
-        <Pressable onPress={() => setNewProduct(newProduct.bought = !newProduct.bought)}>
+        <Pressable onPress={() => setNewProduct(changeBought(product))}>
             {
-                newProduct.bought === false
+                product.bought === false
                     ? <View style={styles.listItem}>
                         <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
                         <Text style={styles.productName}>{product.quantity} x {product.name}</Text>

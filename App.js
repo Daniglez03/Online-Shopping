@@ -17,21 +17,27 @@ export default function App() {
     setProducts(() => [...products, productName])
   }
 
+  let changeBought = (productName) => {
+    productName.bought = !productName.bought
+    //console.log(productName);
+    return productName.bought
+  }
+
   const removeProductHandler = () => {
     setProducts('')
   }
-
   return (
     <View style={styles.container}>
       <ProductInput onProductAdd={addProductHandler} />
       <ScrollView style={styles.productList}>
         {
-          products.length === 0
+          names.length === 0
             ? <Text style={styles.textEmpty}>Aún no hay productos</Text>
             : products.map((product, idx) => (
               <ListItem
                 key={idx + product}
-                product={product} />
+                product={product}
+                changeBought={changeBought} />
             ))
         }
       </ScrollView>
