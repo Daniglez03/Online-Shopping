@@ -41,9 +41,16 @@ export default function App() {
             ))
         }
       </ScrollView>
-      <Pressable style={styles.button} onPress={removeProductHandler}>
-        <Text style={styles.text}>Clear</Text>
-      </Pressable>
+      {
+        names.length === 0
+          ? <Pressable style={styles.buttonDisabled}>
+            <Text style={styles.text}>Clear</Text>
+          </Pressable>
+          : <Pressable style={styles.button} onPress={removeProductHandler}>
+            <Text style={styles.text}>Clear</Text>
+          </Pressable>
+      }
+
     </View>
   );
 }
@@ -74,6 +81,15 @@ const styles = StyleSheet.create({
     height: 40,
     width: 80,
     backgroundColor: '#e53935',
+  },
+  buttonDisabled: {
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    height: 40,
+    width: 80,
+    backgroundColor: '#7f0000',
   },
   text: {
     color: 'white'
