@@ -17,9 +17,8 @@ export default function App() {
     setProducts(() => [...products, productName])
   }
 
-  let changeBought = (productName) => {
+  const changeBought = (productName) => {
     productName.bought = !productName.bought
-    //console.log(productName);
     return productName.bought
   }
 
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: 'lightgrey'
+    backgroundColor: '#fff9c4'
   },
   productList: {
     flex: 4,
