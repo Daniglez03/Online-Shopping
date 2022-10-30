@@ -90,17 +90,17 @@ const styles = StyleSheet.create({
         height: 110,
         borderRadius: 5,
         alignItems: 'center',
-        backgroundColor: '#26a69a',
+        backgroundColor: '#4caf50',
     },
     productName: {
-        backgroundColor: '#00766c',
+        backgroundColor: '#087f23',
         borderRadius: 5,
         marginBottom: 15,
         textAlign: 'center',
         maxWidth: 150
     },
     quantityInput: {
-        backgroundColor: '#00766c',
+        backgroundColor: '#087f23',
         borderRadius: 5,
         marginBottom: 15,
         textAlign: 'center',
@@ -110,11 +110,11 @@ const styles = StyleSheet.create({
     dropdown: {
         width: 150,
         height: 40,
-        borderColor: '#00766c',
+        borderColor: '#087f23',
         borderWidth: 0.5,
         borderRadius: 8,
         paddingHorizontal: 8,
-        backgroundColor: '#00766c',
+        backgroundColor: '#087f23',
     },
     placeholderStyle: {
         fontSize: 16,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 4,
         elevation: 10,
-        backgroundColor: '#64d8cb',
+        backgroundColor: '#80e27e',
     },
     buttonDisabled: {
         alignItems: 'center',
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         borderRadius: 4,
         elevation: 10,
-        backgroundColor: '#00675b',
+        backgroundColor: '#00600f',
     }
 })
 export default ProductInput;

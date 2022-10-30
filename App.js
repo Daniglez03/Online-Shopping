@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: 'lightgrey'
+    backgroundColor: '#fff9c4'
   },
   productList: {
     flex: 4,
