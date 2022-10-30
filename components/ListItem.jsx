@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 const ListItem = ({ product }) => {
+    const [ newProduct, setNewProduct ] = useState(product);
     const addImage = (type) => {
         switch (type) {
             case "Fruit":
@@ -15,13 +17,19 @@ const ListItem = ({ product }) => {
                 return require('../assets/spinach.png')
         }
     }
-    console.log(product);
     return (
-        <Pressable>
-            <View style={styles.listItem}>
-                <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
-                <Text style={styles.productName}>{product.quantity} x {product.name}</Text>
-            </View>
+        <Pressable onPress={() => setNewProduct(newProduct.bought = !newProduct.bought)}>
+            {
+                newProduct.bought === false
+                    ? <View style={styles.listItem}>
+                        <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
+                        <Text style={styles.productName}>{product.quantity} x {product.name}</Text>
+                    </View>
+                    : <View style={styles.listItemTrue}>
+                        <Image style={styles.productImage} source={addImage(product.type.label)}></Image>
+                        <Text style={styles.productNameTrue}>{product.quantity} x {product.name}</Text>
+                    </View>
+            }
         </Pressable>
     )
 }
@@ -37,6 +45,17 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         backgroundColor: 'white',
     },
+    listItemTrue: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderColor: 'black',
+        borderWidth: 2,
+        marginTop: 10,
+        borderRadius: 15,
+        paddingRight: 20,
+        backgroundColor: 'grey',
+    },
     productImage: {
         width: 70,
         height: 70,
@@ -46,7 +65,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'left',
-        //textDecorationLine: "line-through",
+    },
+    productNameTrue: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        textDecorationLine: "line-through"
     },
 })
 
